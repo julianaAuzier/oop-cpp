@@ -25,7 +25,7 @@ class Pessoa{
 		}
 };
 
-// herança simples
+// heranÃ§a simples
 class Cliente: public Pessoa{
 	public:
 	   bool comprando = false;
@@ -37,7 +37,7 @@ class Cliente: public Pessoa{
 	
 		void comprar(){
 		if (comprando == true){
-			cout << nome << " já está comprando." << endl;
+			cout << nome << " jÃ¡ estÃ¡ comprando." << endl;
 		}
 		else{
 			comprando = true;
@@ -51,16 +51,16 @@ class Cliente: public Pessoa{
 			cout << nome << " encerrou a compra." << endl;
 		}
 		else{
-			cout << nome << " não está comprando." << endl;
+			cout << nome << " nÃ£o estÃ¡ comprando." << endl;
 		}
 	}
 };
 	
-// herança multinível
+// heranÃ§a multinÃ­vel
 class ClienteVip: public Cliente{
 	
 	public:
-		float desconto; // todo cliente vip terá 15% de desconto
+		float desconto; // todo cliente vip terÃ¡ 15% de desconto
 		// ou
 		// float desconto = 0.15;
 	
@@ -102,7 +102,7 @@ class Cargo{
 		}
 };
 
-// herança múltipla
+// heranÃ§a mÃºltipla
 class Funcionario: public Pessoa, public Cargo {
 	
 	public:
@@ -128,25 +128,25 @@ class Funcionario: public Pessoa, public Cargo {
 
 int main() {
 
-  // acentuação
+  // acentuaÃ§Ã£o
   setlocale(LC_ALL, "portuguese");
 
   // objetos
-  Cliente c1("Juliana", 25,"Belém", "Pará");
-  ClienteVip c2("Julia", 30,"Santarém", "Pará");
+  Cliente c1("Juliana", 25,"BelÃ©m", "ParÃ¡");
+  ClienteVip c2("Julia", 30,"SantarÃ©m", "ParÃ¡");
   
   /********************TESTES**********************/
   cout <<"\nTestes com Clientes\n";
   cout <<"------------------------------\n";
 
-  // já está comprando
+  // jÃ¡ estÃ¡ comprando
   c1.comprar();
   c1.comprar();
   c1.EncerraCompra();
   c1.valorCompra = 15.00;
   cout <<"\n";
   
-  // não está comprando
+  // nÃ£o estÃ¡ comprando
   c2.EncerraCompra();
   c2.comprar();
   c2.EncerraCompra();
@@ -170,17 +170,12 @@ int main() {
   cg1.setSalario(1800.00);
   cg2.setSalario(1500);
   
-  Funcionario f1("Maria", 41,"Belém", "Pará",cg1.NomeCargo, 0);
-  Funcionario f2("Joao", 36,"Belém", "Pará",cg1.NomeCargo, 0.2);
-  cout<< f1.getSalario() <<endl;
-  cout<< f1.salario_liquido() <<endl;
-  cout<< f1.s_liquido <<endl;
-  cout<< cg1.getSalario() <<endl;
-  cout<< f1.NomeCargo <<endl;
-  cout<< f2.comissao <<endl;
-  /*
-  cout <<f1.nome << " recebe " << f1.comissao*100 << "% de comissão, portanto ganha " << f1.getSalario() << endl;
-  cout <<f2.nome << " recebe " << f2.comissao*100 << "% de comissão, portanto ganha " << f2.salario_liquido() << endl;
-  */
+  Funcionario f1("Maria", 41,"BelÃ©m", "ParÃ¡",cg1.NomeCargo, 0);
+  Funcionario f2("Joao", 36,"BelÃ©m", "ParÃ¡",cg1.NomeCargo, 0.2);
+
+
+  cout <<f1.nome << " recebe " << f1.comissao*100 << "% de comissÃ£o, portanto ganha " << f1.getSalario() << endl;
+  cout <<f2.nome << " recebe " << f2.comissao*100 << "% de comissÃ£o, portanto ganha " << f2.salario_liquido() << endl;
+
   return 0;
 }
