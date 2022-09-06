@@ -27,7 +27,41 @@ class Pessoa{
 		}
 };
 
+class Cargo{
+	public:
+		string nomeCargo;
+		float salario;
+
+		Cargo(string nomeC, float salar){
+			nomeCargo = nomeC;
+			salario = salar;
+		}
+};
+
 // herança simples
+class Funcionario: public Pessoa{
+	
+	public:
+	    float comissao;
+	    float s_liquido;
+	    string nomeCargo;
+		
+		Funcionario(string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
+			comissao = comiss;
+		}
+	
+		void Carg(Cargo &cargo){
+			nomeCargo = cargo.nomeCargo;
+			s_liquido = cargo.salario;
+			
+			if (comissao > 0){
+				s_liquido = s_liquido + (comissao * s_liquido);
+				
+			}
+		}
+		
+};
+
 class Cliente: public Pessoa{
 	public:
 	   bool comprando = false;
@@ -59,7 +93,7 @@ class Cliente: public Pessoa{
 };
 	
 // herança multinível
-class ClienteVip: public Cliente{
+class ClienteVip: public Cliente{ // que herda de Pessoa
 	
 	public:
 		float desconto; // todo cliente vip terá 15% de desconto
@@ -76,41 +110,6 @@ class ClienteVip: public Cliente{
 		float novoValorCompra = valorCompra - (desconto * valorCompra);
 		return novoValorCompra;
 	}
-};
-
-// mais uma classe...
-class Cargo{
-	public:
-		string nomeCargo;
-		float salario;
-
-		Cargo(string nomeC, float salar){
-			nomeCargo = nomeC;
-			salario = salar;
-		}
-};
-
-class Funcionario: public Pessoa{
-	
-	public:
-	    float comissao;
-	    float s_liquido;
-	    string nomeCargo;
-		
-		Funcionario(string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
-			comissao = comiss;
-		}
-	
-		void Carg(Cargo &cargo){
-			nomeCargo = cargo.nomeCargo;
-			s_liquido = cargo.salario;
-			
-			if (comissao > 0){
-				s_liquido = s_liquido + (comissao * s_liquido);
-				
-			}
-		}
-		
 };
 
 int main() {
