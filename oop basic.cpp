@@ -3,10 +3,8 @@
 
 using namespace std;
 
-class Pessoa{
-	// atributos
-	
-	private: // default
+class Pessoa{	
+	private:
 		int id;
 	
 	public:
@@ -15,8 +13,6 @@ class Pessoa{
 	   string cidade;
 	   string estado;
 
-	
-	// construtor
 	public:
 		Pessoa(string n, int i, string c, string e){
 			nome = n;
@@ -80,8 +76,6 @@ class ClienteVip: public Cliente{
 		float novoValorCompra = valorCompra - (desconto * valorCompra);
 		return novoValorCompra;
 	}
-	
-	
 };
 
 // mais uma classe...
@@ -96,35 +90,27 @@ class Cargo{
 		}
 };
 
-// herança múltipla
-class Funcionario: public Pessoa {
+class Funcionario: public Pessoa{
 	
 	public:
 	    float comissao;
 	    float s_liquido;
 	    string nomeCargo;
-	    
-	    void Carg(Cargo &cargo){
-			nomeCargo = cargo.nomeCargo;
-			s_liquido = cargo.salario;
-		}
 		
 		Funcionario(string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
 			comissao = comiss;
 		}
 	
-	//public:
-		
-	
-		float salario_liquido(){
+		void Carg(Cargo &cargo){
+			nomeCargo = cargo.nomeCargo;
+			s_liquido = cargo.salario;
+			
 			if (comissao > 0){
 				s_liquido = s_liquido + (comissao * s_liquido);
-				return s_liquido;
-			}
-			else{
-				return s_liquido;
+				
 			}
 		}
+		
 };
 
 int main() {
@@ -169,7 +155,7 @@ int main() {
   Cargo cg2("Vendedor",1500);
   
   Funcionario f1("Maria", 41,"Belém", "Pará", 0);
-  Funcionario f2("Joao", 36,"Belém", "Pará", 0.2);
+  Funcionario f2("Joao", 36,"Belém", "Pará", 0.15);
   
   f1.Carg(cg1);
   f2.Carg(cg2);
