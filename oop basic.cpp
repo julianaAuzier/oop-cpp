@@ -103,21 +103,28 @@ class Funcionario: public Pessoa {
 	    float comissao;
 	    float s_liquido;
 	    string nomeCargo;
+	    
+	    void Carg(Cargo &cargo){
+			nomeCargo = cargo.nomeCargo;
+			s_liquido = cargo.salario;
+		}
 		
 		Funcionario(string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
 			comissao = comiss;
 		}
 	
-		void Carg(Cargo &cargo){
-			nomeCargo = cargo.nomeCargo;
-			s_liquido = cargo.salario;
-			
+	//public:
+		
+	
+		float salario_liquido(){
 			if (comissao > 0){
 				s_liquido = s_liquido + (comissao * s_liquido);
-				
+				return s_liquido;
+			}
+			else{
+				return s_liquido;
 			}
 		}
-		
 };
 
 int main() {
@@ -162,7 +169,7 @@ int main() {
   Cargo cg2("Vendedor",1500);
   
   Funcionario f1("Maria", 41,"Belém", "Pará", 0);
-  Funcionario f2("Joao", 36,"Belém", "Pará", 0.15);
+  Funcionario f2("Joao", 36,"Belém", "Pará", 0.2);
   
   f1.Carg(cg1);
   f2.Carg(cg2);
