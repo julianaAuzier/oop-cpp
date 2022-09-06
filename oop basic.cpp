@@ -14,6 +14,7 @@ class Pessoa{
 	   int idade;
 	   string cidade;
 	   string estado;
+
 	
 	// construtor
 	public:
@@ -23,9 +24,14 @@ class Pessoa{
 			cidade = c;
 			estado = e;
 		}
+		
+	// destrutor
+		~Pessoa(){
+			cout << "Destruidor chamado." << endl;
+		}
 };
 
-// heran√ßa simples
+// heranÁa simples
 class Cliente: public Pessoa{
 	public:
 	   bool comprando = false;
@@ -37,7 +43,7 @@ class Cliente: public Pessoa{
 	
 		void comprar(){
 		if (comprando == true){
-			cout << nome << " j√° est√° comprando." << endl;
+			cout << nome << " j· est· comprando." << endl;
 		}
 		else{
 			comprando = true;
@@ -51,16 +57,16 @@ class Cliente: public Pessoa{
 			cout << nome << " encerrou a compra." << endl;
 		}
 		else{
-			cout << nome << " n√£o est√° comprando." << endl;
+			cout << nome << " n„o est· comprando." << endl;
 		}
 	}
 };
 	
-// heran√ßa multin√≠vel
+// heranÁa multinÌvel
 class ClienteVip: public Cliente{
 	
 	public:
-		float desconto; // todo cliente vip ter√° 15% de desconto
+		float desconto; // todo cliente vip ter· 15% de desconto
 		// ou
 		// float desconto = 0.15;
 	
@@ -81,72 +87,60 @@ class ClienteVip: public Cliente{
 // mais uma classe...
 class Cargo{
 	public:
-		string NomeCargo;
-		
-	private:
+		string nomeCargo;
 		float salario;
-	
-	public:
-	Cargo(string nomeC){
-		NomeCargo = nomeC;
-	}
-	
-	public:
-		void setSalario(float s){
-			salario = s;
-		}
-	
-	public:
-		float getSalario(){
-			return salario;
+
+		Cargo(string nomeC, float salar){
+			nomeCargo = nomeC;
+			salario = salar;
 		}
 };
 
-// heran√ßa m√∫ltipla
-class Funcionario: public Pessoa, public Cargo {
+// heranÁa m˙ltipla
+class Funcionario: public Pessoa {
 	
 	public:
 	    float comissao;
-	    float s_liquido = getSalario();
-	    
-	public:
-		Funcionario(string n, int i, string c, string e, string nomeC, float comiss): Pessoa( n, i, c, e), Cargo(nomeC){
+	    float s_liquido;
+	    string nomeCargo;
+		
+		Funcionario(string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
 			comissao = comiss;
 		}
-
-	public:
-		float salario_liquido(){
+	
+		void Carg(Cargo &cargo){
+			nomeCargo = cargo.nomeCargo;
+			s_liquido = cargo.salario;
+			
 			if (comissao > 0){
-				s_liquido = getSalario() + (comissao * getSalario());
-				return s_liquido;
-			}
-			else{
-				return getSalario();
+				s_liquido = s_liquido + (comissao * s_liquido);
+				
 			}
 		}
+		
 };
 
 int main() {
 
-  // acentua√ß√£o
+  // acentuaÁ„o
   setlocale(LC_ALL, "portuguese");
 
   // objetos
-  Cliente c1("Juliana", 25,"Bel√©m", "Par√°");
-  ClienteVip c2("Julia", 30,"Santar√©m", "Par√°");
+  Cliente c1("Juliana", 25,"BelÈm", "Par·");
+  ClienteVip c2("Julia", 30,"SantarÈm", "Par·");
   
   /********************TESTES**********************/
   cout <<"\nTestes com Clientes\n";
   cout <<"------------------------------\n";
 
-  // j√° est√° comprando
+  // j· est· comprando
   c1.comprar();
   c1.comprar();
   c1.EncerraCompra();
   c1.valorCompra = 15.00;
   cout <<"\n";
   
-  // n√£o est√° comprando
+  // n„o est· comprando
   c2.EncerraCompra();
   c2.comprar();
   c2.EncerraCompra();
@@ -164,18 +158,17 @@ int main() {
   cout <<"\nTestes com Funcionarios\n";
   cout <<"------------------------------\n";
   
-  Cargo cg1("Gerente");
-  Cargo cg2("Vendedor");
+  Cargo cg1("Gerente",1800.00);
+  Cargo cg2("Vendedor",1500);
   
-  cg1.setSalario(1800.00);
-  cg2.setSalario(1500);
+  Funcionario f1("Maria", 41,"BelÈm", "Par·", 0);
+  Funcionario f2("Joao", 36,"BelÈm", "Par·", 0.15);
   
-  Funcionario f1("Maria", 41,"Bel√©m", "Par√°",cg1.NomeCargo, 0);
-  Funcionario f2("Joao", 36,"Bel√©m", "Par√°",cg1.NomeCargo, 0.2);
-
-
-  cout <<f1.nome << " recebe " << f1.comissao*100 << "% de comiss√£o, portanto ganha " << f1.getSalario() << endl;
-  cout <<f2.nome << " recebe " << f2.comissao*100 << "% de comiss√£o, portanto ganha " << f2.salario_liquido() << endl;
-
+  f1.Carg(cg1);
+  f2.Carg(cg2);
+  
+  cout << f1.nome << " recebe " << f1.comissao*100 << "% de comiss„o, portanto ganha " << f1.s_liquido << endl;
+  cout <<f2.nome << " recebe " << f2.comissao*100 << "% de comiss„o, portanto ganha " << f2.s_liquido << endl;
+  
   return 0;
 }
