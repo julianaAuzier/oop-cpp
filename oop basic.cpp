@@ -8,22 +8,18 @@ class Pessoa{
 		int id;
 	
 	public:
-	   string nome;
+	   string nome, cidade, estado;
 	   int idade;
-	   string cidade;
-	   string estado;
-
-	public:
-		Pessoa(string n, int i, string c, string e){
-			nome = n;
-			idade = i;
-			cidade = c;
-			estado = e;
-		}
+	   
+	   Pessoa(string n, int i, string c, string e){
+		   nome = n;
+		   idade = i;
+		   cidade = c;
+		   estado = e;
+	   }
 		
 	// destrutor
 		~Pessoa(){
-			cout << "Destruidor chamado." << endl;
 		}
 };
 
@@ -32,9 +28,12 @@ class Cargo{
 		string nomeCargo;
 		float salario;
 
-		Cargo(string nomeC, float salar){
+		Cargo(const string nomeC, float salar){
 			nomeCargo = nomeC;
 			salario = salar;
+		}
+		
+		~Cargo(){
 		}
 };
 
@@ -42,14 +41,17 @@ class Cargo{
 class Funcionario: public Pessoa{
 	
 	public:
-	    float comissao;
-	    float s_liquido;
+	    float comissao, s_liquido;
 	    string nomeCargo;
 		
-		Funcionario(string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
+		Funcionario(const string n, int i, string c, string e, float comiss): Pessoa( n, i, c, e){
 			comissao = comiss;
 		}
 	
+		~Funcionario(){
+		}
+		
+		//passando um objeto como parametro por referencia para outro objeto
 		void Carg(Cargo &cargo){
 			nomeCargo = cargo.nomeCargo;
 			s_liquido = cargo.salario;
@@ -67,10 +69,12 @@ class Cliente: public Pessoa{
 	   bool comprando = false;
 	   float valorCompra;
 	   
-	   
 	public:
 		Cliente(string n, int i, string c, string e, bool comprando = false): Pessoa( n, i, c, e){}
-	
+		
+		~Cliente(){
+		}
+		
 		void comprar(){
 		if (comprando == true){
 			cout << nome << " já está comprando." << endl;
@@ -103,10 +107,13 @@ class ClienteVip: public Cliente{ // que herda de Pessoa
 	public:
 		ClienteVip(string n, int i, string c, string e, bool comprando = false,  float d = 0.15): Cliente( n, i, c, e){
 			desconto = d;
-	 }
-	
+		}
+		
+		~ClienteVip(){
+		}
+		
 	public:
-	float valorFinal(){
+		float valorFinal(){
 		float novoValorCompra = valorCompra - (desconto * valorCompra);
 		return novoValorCompra;
 	}
