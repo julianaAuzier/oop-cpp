@@ -1,7 +1,4 @@
 #include<iostream>
-/*#include "Veiculo.h"
-#include "Carro.h"
-#include "VeiculoAquatico.h"*/
 
 using namespace std;
 
