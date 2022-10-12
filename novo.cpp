@@ -1,9 +1,12 @@
 #include<iostream>
+/*#include "Veiculo.h"
+#include "Carro.h"
+#include "VeiculoAquatico.h"*/
 
 using namespace std;
 
 /* jogo de corrida:
-   as corridas s„o vari·veis, alguns caminhos passam por pontes frageis em cima de rios,
+   as corridas s√£o vari√°veis, alguns caminhos passam por pontes frageis em cima de rios,
    e algumas vezes os caminhos passam por pontes frageis entre abismos longos e profundos.
 */
 
@@ -59,7 +62,7 @@ class Anfibio: public Carro, public VeiculoAquatico{
 	
 		public:
 			string resp_user;
-			
+
 		// variaveis referentes a Carro /**/ variaveis referentes a VeiculoAquatico /**/ variaveis referentes a Veiculo
 		Anfibio(int tp, string acess, /**/ int th, int pma, /**/ int vma, string c, int aps):Veiculo( vma, c, aps),Carro(tp, acess, vma, c, aps), VeiculoAquatico(th, pma, vma, c, aps){
 			
@@ -102,7 +105,11 @@ class AeroAquatico: public VeiculoAereo, public VeiculoAquatico{
 		AeroAquatico(int th, int pma, /**/ int ama,/**/ int vma, string c, int aps):VeiculoAquatico(th, pma, vma, c, aps),VeiculoAereo(th, ama, vma, c, aps),Veiculo(vma, c, aps){};
 };
 
-int main(){
+
+//------------------------MAIN--------------------------
+
+int main(int argc, char **argv){
+	
 	Carro car(30, "lanca",120 ,"preto",3);
 	cout<<"INFORMACOES SOBRE O CARRO 'CAR'\n";
 	cout<< "Velocidade maxima atingida: "<< car.velocidadeMaximaAtingida<< endl;
