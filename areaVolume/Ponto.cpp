@@ -1,6 +1,6 @@
-#include "Ponto.h"
+#include "Ponto.h" //no .h foi declarada a classe e os seus elementos (go check!)
 
-Ponto::Ponto( ): x(0), y(0){ // construtor da classe recebe 2 double como parametros sem necessidade de alguma verificação
+Ponto::Ponto( ): x(0), y(0){ // construtor da classe recebe 2 double (go check .h!) como parametros sem necessidade de alguma verificação
 	
 }
 

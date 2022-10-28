@@ -1,7 +1,8 @@
-#include "Cilindro.h"
+#include "Cilindro.h" //no .h foi declarada a classe e os seus elementos (go check!)
 
-Cilindro::Cilindro( )
-: Circulo(  )
+// Herança Multinível
+
+Cilindro::Cilindro( ): Circulo(  ) 
 {
 	this->altura = 0;
 }
