@@ -38,10 +38,10 @@ const Circulo &Circulo::operator= (const Circulo &cirOut ) //sobreposição de = (
 
 
 
-ostream &operator<<( ostream &out, const Circulo &c )
+ostream &operator<<( ostream &out, const Circulo &c ) //sobreposicao de <<. Quando o c++ ver a estrutura: objeto da classe ostream (cout) << objeto de Circulo..
 {
-	out << 	"Centro: " << static_cast< Ponto >( c ) << '\t';
-	out << "Raio: " << c.raio;
+	out << 	"Centro: " << static_cast< Ponto >( c ) << '\t'; // ..ele vai mostrar o centro do cículo (a parte Ponto do objeto)
+	out << "Raio: " << c.raio;								// e o raio
 		
 	return out;
 }
