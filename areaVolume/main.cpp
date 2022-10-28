@@ -23,8 +23,9 @@ int main(int argc, char **argv)
 	cout << "c3" << '\n';
 	Circulo c3;
 	cout << "AtrCirculo\n" << c3 << "\n";
-	cout << "Sua area eh " << c3.calcArea() << "\n\n";	
+	cout << "Sua area eh " << c3.calcArea() << "\n\n";
 	
+	//recebendo os mesmos valores de outro objeto da mesma classe
 	c3 = c;	
 	
 	cout << "AtrCirculo\n" << c3 << "\n";
@@ -36,25 +37,25 @@ int main(int argc, char **argv)
 	cout << "A area da base eh " << cil.calcArea() << "\n";
 	cout << "O volume eh " << cil.calcVolume() <<"\n\n";
 	
+	//Usando o construtor de copia
 	Cilindro cil2( cil ); 
 	cout << "CilinCopia\n" << cil2 << "\n";
 	cout << "A area da base eh " << cil2.calcArea() << "\n";
 	cout << "O volume eh " << cil2.calcVolume() <<"\n\n";
 	
-	
+	// Usando atribuição
 	cout << "AtribCilindro\n\n";
 	Cilindro cil3;
 	cout << "CilinCopia\n" << cil3 << "\n";
 	cout << "A area da base eh " << cil3.calcArea() << "\n";
 	cout << "O volume eh " << cil3.calcVolume() <<"\n\n";
 	
+	//recebendo os mesmos valores de outro objeto da mesma classe
 	cil3 = cil;
 	
 	cout << "CilinCopia\n" << cil3 << "\n";
 	cout << "A area da base eh " << cil3.calcArea() << "\n";
 	cout << "O volume eh " << cil3.calcVolume() <<"\n\n";
-	
-	
 	
 	return 0;
 }
