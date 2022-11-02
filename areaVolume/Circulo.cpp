@@ -18,10 +18,10 @@ Circulo::Circulo( double xout, double yout, double raio ):Ponto( xout, yout ) //
 }
 
 Circulo::Circulo( const Circulo &c_out ): Ponto( static_cast< Ponto >( c_out ) ) //construtor de cópia da classe, como herda de Ponto, o construtor de códia de ponto recebe o objeto ponto aqui.
-																				// Aqui é passado para o contrutor de copia de Ponto a "parte Ponto" do obj Circulo (ou seja,somente x e y)
+										// Aqui é passado para o contrutor de copia de Ponto a "parte Ponto" do obj Circulo (ou seja,somente x e y)
 {
 	this->raio = c_out.raio; // o raio é pego separado porque a "parte Ponto" do parâmetro foi mandada para o novo objPonto.
-							// Aqui é add o raio neste objeto e assim ele também é Circulo
+				// Aqui é add o raio neste objeto e assim ele também é Circulo
 }
 
 Circulo::~Circulo(){ //destrutor
